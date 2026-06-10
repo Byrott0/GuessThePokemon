@@ -1,6 +1,4 @@
 from datetime import datetime
-from dataclasses import dataclass
-
 from sqlalchemy import Column, DateTime, Integer, String, JSON
 from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base

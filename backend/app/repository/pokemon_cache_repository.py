@@ -5,7 +5,7 @@ class PokemonCacheRepository:
   def __init__(self, db: Session):
     self.db = db
 
-  def get_by_id(self, db_id: int) -> PokemonCache | None:
+  def get_by_cached_id(self, db_id: int) -> PokemonCache | None:
     return (
       self.db.query(PokemonCache)
       .filter(PokemonCache.db_id == db_id)
@@ -36,6 +36,9 @@ class PokemonCacheRepository:
     return pokemon
   
   def update_pokemon(self, pokemon: PokemonCache, name:str, sprite_url: str, types: list[str]) -> PokemonCache:
+    if pokemon is None:
+      return None
+    
     pokemon.name = name
     pokemon.sprite_url = sprite_url
     pokemon.types = types

@@ -1,10 +1,11 @@
 from datetime import datetime
+from uuid import UUID, uuid4
 from dataclasses import dataclass
 
 
 @dataclass
 class GameSession:
-  game_id: str
+  game_id: UUID
   player_name: str
   pokemon_id: int
   pokemon_name: str

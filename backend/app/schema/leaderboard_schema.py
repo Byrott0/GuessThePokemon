@@ -1,12 +1,11 @@
-from datetime import datetime
-
 from pydantic import BaseModel, Field
 
+
 class LeaderboardEntry(BaseModel):
-  player_id: int
+  rank: int
+  player_id: str
   player_name: str
   total_score: int
-  last_played: datetime
 
 
 class LeaderboardResponse(BaseModel):

@@ -2,7 +2,7 @@ import random
 import requests
 
 from app.core.config import MAX_POKEMON_ID, MIN_POKEMON_ID, POKE_API_BASE_URL
-from app.model.pokemon_cache import PokemonCache
+from app.schema.pokemon_schema import PokemonCacheResponse
 from app.repository.pokemon_cache_repository import PokemonCacheRepository
 
 
@@ -10,7 +10,8 @@ class PokemonService:
     def __init__(self, pokemon_repository: PokemonCacheRepository):
         self.pokemon_repository = pokemon_repository
 
-    def get_pokemon_by_id(self, pokemon_id: int) -> PokemonCache:
+    def get_pokemon_by_id(self, pokemon_id: int) -> PokemonCacheResponse:
+        # geef een if logica mee om te kijken of pokemon cached is of niet.
         cached_pokemon = self.pokemon_repository.get_by_pokemon_id(pokemon_id)
 
         if cached_pokemon:
@@ -25,7 +26,7 @@ class PokemonService:
             types=pokemon_data["types"],
         )
 
-    def get_random_pokemon(self) -> PokemonCache:
+    def get_random_pokemon(self) -> PokemonCacheResponse:
         pokemon_id = random.randint(MIN_POKEMON_ID, MAX_POKEMON_ID)
         return self.get_pokemon_by_id(pokemon_id)
 
