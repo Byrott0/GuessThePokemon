@@ -31,7 +31,7 @@ backend/data/*.db
 
 
 # arcitectural file
-.design
+design
 
 #Python
 venv/

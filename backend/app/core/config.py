@@ -1,7 +1,16 @@
 from pathlib import Path
-import os
 from dotenv import dotenv_values
+import logging
 
+# logging setup
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s:%(name)s:%(message)s",
+)
+
+logger = logging.getLogger(__name__)
+
+# ENV setup
 ENV_FILE = Path(__file__).resolve().parents[2] / ".env"
 ENV_VALUES = dotenv_values(ENV_FILE)
 
