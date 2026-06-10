@@ -20,7 +20,7 @@ In development
 Clone de repository en ga naar de backend-map:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Byrott0/GuessThePokemon.git
 cd GuessThePokemon/backend
 ```
 
