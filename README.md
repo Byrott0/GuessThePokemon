@@ -46,22 +46,6 @@ Installeer de dependencies:
 pip install -r requirements.txt
 ```
 
-## Configuratie
-
-Maak in de map `backend/` een `.env` bestand aan:
-
-```env
-APP_NAME=GuessThePokemon
-APP_VERSION=0.1.0
-DEBUG=true
-
-MIN_POKEMON_ID=1
-MAX_POKEMON_ID=151
-POKEMON_API_BASE_URL=https://pokeapi.co/api/v2
-
-DB_URL=sqlite:///./guess_the_pokemon.db
-```
-
 ## Applicatie starten
 
 Start de FastAPI-server vanuit de map `backend/`:
