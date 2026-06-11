@@ -29,7 +29,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     
-    #app.include_router(game_routes.router)
+    app.include_router(game_routes.router)
     app.include_router(leaderboard_routes.router)
 
 

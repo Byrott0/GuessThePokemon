@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass
 class GameSession:
-  game_id: UUID
+  game_id: str
   player_name: str
   pokemon_id: int
   pokemon_name: str
@@ -16,5 +16,4 @@ class GameSession:
   max_attempts: int 
   score_gained: int
   created_at: datetime
-  expires_at: datetime
   completed_at: datetime | None

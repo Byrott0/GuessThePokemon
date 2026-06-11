@@ -4,9 +4,10 @@ from pydantic import BaseModel, Field
 
 class StartGameRequest(BaseModel): 
   player_name: str = Field(min_length = 2, max_length = 25)
-
+  
 class StartGameResponse(BaseModel):
   game_id: str
+  player_name: str = Field(min_length = 2, max_length = 25)
   pokemon_id: int
   pokemon_name: str
   sprite_url: str
@@ -37,5 +38,4 @@ class GameSessionResponse(BaseModel):
   max_attempts: int 
   score_gained: int
   created_at: datetime
-  expires_at: datetime
   completed_at: datetime | None
