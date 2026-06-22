@@ -58,7 +58,7 @@ class GameService:
         game_session.status = "won"
         game_session.score_gained = max(
             0,
-            (game_session.max_attempts - game_session.attempts + 1) * 5,
+            (game_session.max_attempts - game_session.attempts + 1) * 7,
         )
         game_session.completed_at = datetime.now()
 

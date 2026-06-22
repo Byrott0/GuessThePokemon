@@ -1,19 +1,10 @@
 # GuessThePokemon
 
-GuessThePokemon is een Python project waarin spelers tussen de eerste 151 Pokemon moeten raden op basis van een sprite of silhouette. De backend haalt de data op via de [PokeAPI](https://pokeapi.co/) en kan deze lokaal cachen in een database.
+GuessThePokemon is een project waarin spelers tussen de eerste 151 Pokemon moeten raden op basis van een sprite of silhouette. De backend haalt de data op via de [PokeAPI](https://pokeapi.co/) en kan deze lokaal cachen in een database.
 
 ## Status
 
 In development
-
-## Features
-
-- FastAPI-backend voor een Pokemon raadspel
-- Integratie met de PokeAPI
-- Lokale Pokemon-cache via SQLAlchemy
-- Schemas voor game-sessies, guesses en leaderboard-data
-- Basisconfiguratie via een `.env` bestand
-- Voorbereide structuur voor game- en leaderboard-endpoints
 
 ## Installatie
 
@@ -56,22 +47,12 @@ uvicorn app.main:app --reload
 
 Open daarna:
 
-- API: `http://127.0.0.1:8000`
-- Swagger docs: `http://127.0.0.1:8000/docs`
-- Health check: `http://127.0.0.1:8000/`
+- API docs: `http://127.0.0.1:8000/docs`
 
-De health check geeft bijvoorbeeld terug:
-
-```json
-{
-  "status": "ok",
-  "app": "GuessThePokemon"
-}
-```
 
 ## PokeAPI
 
-Dit project gebruikt de publieke PokeAPI om Pokemon-informatie op te halen, zoals:
+Dit project gebruikt de publieke PokeAPI om Pokemon informatie op te halen, zoals:
 
 - Pokemon ID
 - Naam
@@ -79,4 +60,3 @@ Dit project gebruikt de publieke PokeAPI om Pokemon-informatie op te halen, zoal
 - Types
 
 Meer informatie: [https://pokeapi.co/](https://pokeapi.co/)
-

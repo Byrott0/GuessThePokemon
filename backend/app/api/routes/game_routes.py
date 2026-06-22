@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.repository.leaderboard_repository import LeaderboardRepository
 from app.repository.pokemon_cache_repository import PokemonCacheRepository
-from app.schema.game_schema import StartGameRequest, StartGameResponse, GuessRequest, GameSessionResponse
+from app.schema.game_schema import StartGameRequest, GuessRequest, GameSessionResponse
 from app.service.game_service import GameService
 from app.service.leaderboard_service import LeaderboardService
 from app.service.pokemon_service import PokemonService
@@ -36,7 +36,7 @@ def get_game_service(
     pokemon_service=pokemon_service,
   )
 
-@router.post("/start_game", response_model=StartGameResponse)
+@router.post("/start_game", response_model=GameSessionResponse)
 def start_game(
     request: StartGameRequest,
     game_service: GameService = Depends(get_game_service),
