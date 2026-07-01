@@ -13,7 +13,7 @@ class LeaderboardRepository:
       .filter(PlayerScore.player_id == player_id)
       .first()
     )
-  
+
   def get_all_players(self) -> list[PlayerScore]:
     return self.db.query(PlayerScore).all()
   
@@ -57,5 +57,15 @@ class LeaderboardRepository:
     return player
   
   
-  def delete_player(self, player: PlayerScore) -> None:
-    pass
+  def delete_player(self, player: PlayerScore, player_name: str) -> None:
+    player = (
+      self.db.query(PlayerScore)
+      .filter(PlayerScore.player_name == player_name)
+      .first()
+    )
+
+    if player is None:
+      return None
+    
+    self.db.delete(player)
+    self.db.commit()
