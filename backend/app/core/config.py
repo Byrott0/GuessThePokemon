@@ -1,6 +1,7 @@
 from pathlib import Path
 from dotenv import dotenv_values
 import logging
+import os
 
 # logging setup
 logging.basicConfig(
@@ -16,7 +17,7 @@ ENV_VALUES = dotenv_values(ENV_FILE)
 
 
 def get_required_env(name: str) -> str:
-    value = ENV_VALUES.get(name)
+    value = os.environ.get(name) or ENV_VALUES.get(name)
     if not value:
         raise RuntimeError(f"Missing required environment variable: {name}")
     return value

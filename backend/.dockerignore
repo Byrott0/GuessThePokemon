@@ -1,0 +1,46 @@
+# Python cache/binary files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Local environment files
+*.env*
+.env.*
+
+# Local database/runtime data
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Test/cache/tooling output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Docker files that do not need to be copied into the image
+dockerfile
+Dockerfile
+.dockerignore
+
+# Frontend/build artifacts if they ever end up in backend context
+node_modules/
+dist/
+build/

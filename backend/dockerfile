@@ -1,0 +1,44 @@
+# syntax=docker/dockerfile:1
+
+# Build stage: gebruikt een Python image met build tools om dependencies te installeren.
+FROM python:3.12-slim AS builder
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Zet de werkmap voor de backend code.
+WORKDIR /app
+
+# Maakt een virtual environment zodat dependencies apart van het systeem blijven.
+RUN python3 -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Installeert Python dependencies uit requirements.txt.
+# Deze Dockerfile verwacht dat de build context de backend map is.
+RUN --mount=type=cache,target=/root/.cache/pip \
+    --mount=type=bind,source=requirements.txt,target=requirements.txt \
+    pip install --no-cache-dir -r requirements.txt
+
+# Runtime stage: gebruikt een kleinere Python image voor het draaien van de app.
+FROM python:3.12-slim
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Zet de werkmap waarin de applicatie draait.
+WORKDIR /app
+
+# Kopieert de virtual environment met geinstalleerde dependencies uit de build stage.
+COPY --from=builder /venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Kopieert de backend applicatiecode naar de container.
+COPY . .
+
+# Documenteert dat de FastAPI applicatie op poort 8000 luistert.
+EXPOSE 8000
+
+# Start Uvicorn met de FastAPI app uit app/main.py.
+CMD ["/venv/bin/python3", "-m", "uvicorn", "app.main:app", "--host=0.0.0.0", "--port=8000"]
