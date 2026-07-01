@@ -30,13 +30,15 @@ jobs:
       - name: setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       
       - name: Install Node dependencies
+        working-directory: frontend
         run: |
-          npm install
+          npm ci
       
       - name: Build frontend
+        working-directory: frontend
         run: |
           npm run build
       
